@@ -1,9 +1,17 @@
 class Solution:
     def maxProduct(self, n: int) -> int:
-        dig = []
-        while n != 0:
-            dig.append(n%10)
+        m1, m2 = -1, -1
+        while n > 0:
+            dig = n%10
+
+            if dig > m1:
+                m2 = m1
+                m1 = dig
+
+            elif dig > m2:
+                m2 = dig
+
             n = int(n/10)
         
-        dig.sort()
-        return (dig[-1]*dig[-2])
+        return m1*m2
+
