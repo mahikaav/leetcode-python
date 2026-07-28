@@ -1,10 +1,6 @@
 class Solution:
     def concatWithReverse(self, nums: list[int]) -> list[int]:
-        ans = []
-        for num in nums:
-            ans.append(num)
-        i = len(nums)-1
-        while i >=0:
-            ans.append(nums[i])
-            i -= 1
-        return ans
+        n = len(nums)
+        for i in range(n-1,-1,-1):
+            nums.append(nums[i])
+        return nums
