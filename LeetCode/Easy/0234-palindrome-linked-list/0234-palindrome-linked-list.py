@@ -11,6 +11,16 @@ class Solution:
             lis.append(curr.val)
             curr = curr.next
         
-        return lis == lis[::-1]
+        n = len(lis)
+        left = 0
+        right = n-1
+        
+        while left < right:
+            if lis[left] != lis[right]:
+                return False
+            left += 1
+            right -= 1
+        
+        return True
 
         
