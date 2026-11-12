@@ -1,0 +1,36 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        if not s:
+            return 0 
+
+        INT_MIN = -2**31
+        INT_MAX = 2**31 -1
+        n = len(s)
+        i = 0
+
+        while i < n and s[i] == ' ':
+            i += 1
+        
+        if i == n:
+            return 0
+
+        sign = 1
+        if s[i] == '-':
+            sign = -1
+            i += 1
+        elif s[i] == '+':
+            i += 1
+        
+        res = 0
+        while i < n and s[i].isdigit():
+            dig = int(s[i])
+            res = res * 10 + dig
+
+            if res * sign <= INT_MIN:
+                return INT_MIN
+            if res * sign >= INT_MAX:
+                return INT_MAX
+            
+            i += 1
+        
+        return sign*res
